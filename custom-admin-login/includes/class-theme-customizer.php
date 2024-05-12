@@ -311,5 +311,50 @@ class Theme_Customizer {
   protected function __sleep() {
     
   }
+  
+public function login_page( $wp_customize ) {
+    // Aquí van las secciones y controles existentes...
+    
+    // Nueva opción: Color de Texto
+    $wp_customize->add_setting( 'login_text_color', [ 'default' => '#ffffff', ] );
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control( $wp_customize, 'login_text_color', [
+            'label'    => __( 'Text Color', 'custom-admin-login' ),
+            'section'  => $section_id,
+            'settings' => 'login_text_color',
+        ] )
+    );
+    
+    // Nueva opción: Fondo Transparente
+    $wp_customize->add_setting( 'login_background_transparent', [ 'default' => false, ] );
+    $wp_customize->add_control(
+        'login_background_transparent', [
+            'label'    => __( 'Transparent Background', 'custom-admin-login' ),
+            'section'  => $section_id,
+            'settings' => 'login_background_transparent',
+            'type'     => 'checkbox',
+        ]
+    );
+    
+    // Nueva opción: Color del Formulario
+    $wp_customize->add_setting( 'login_form_color', [ 'default' => '#ffffff', ] );
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control( $wp_customize, 'login_form_color', [
+            'label'    => __( 'Form Color', 'custom-admin-login' ),
+            'section'  => $section_id,
+            'settings' => 'login_form_color',
+        ] )
+    );
+}
 
+public function login_font_color() {
+    // Código para cambiar el color del texto
+}
+
+public function login_background_color() {
+    // Código para hacer el fondo transparente o cambiar su color
+}
+
+public function login_background() {
+    // Código para cambiar el color o hacer transparente el formulario de inicio de sesión
 }
